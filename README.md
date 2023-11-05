@@ -183,9 +183,9 @@ public class SpringBootMarketTest {
         // 假设用户C购买1斤苹果，123斤草莓，9斤芒果(草莓打八折)
         DiscountStrategy noDiscountStrategy = new NoDiscountStrategy();
         PercentDiscountStrategy percentDiscountStrategy = new PercentDiscountStrategy("0.8");
-        Fruit apple = new Fruit("苹果", applePrice, 12, noDiscountStrategy);
-        Fruit strawberry = new Fruit("草莓", strawberryPrice, 23, percentDiscountStrategy);
-        Fruit mongo = new Fruit("芒果", mongoPrice, 36, noDiscountStrategy);
+        Fruit apple = new Fruit("苹果", applePrice, 1, noDiscountStrategy);
+        Fruit strawberry = new Fruit("草莓", strawberryPrice, 123, percentDiscountStrategy);
+        Fruit mongo = new Fruit("芒果", mongoPrice, 9, noDiscountStrategy);
 
         //用户下单结算(无折扣)
         Order order = new Order(noDiscountStrategy);
@@ -202,9 +202,9 @@ public class SpringBootMarketTest {
         // 假设用户C购买78斤苹果，123斤草莓，231斤芒果(无折扣)
         DiscountStrategy noDiscountStrategy = new NoDiscountStrategy();
         DiscountStrategy reduceStrategy = new ReduceStrategy(new BigDecimal(100), new BigDecimal(10));
-        Fruit apple = new Fruit("苹果", applePrice, 12, noDiscountStrategy);
-        Fruit strawberry = new Fruit("草莓", strawberryPrice, 23, noDiscountStrategy);
-        Fruit mongo = new Fruit("芒果", mongoPrice, 36, noDiscountStrategy);
+        Fruit apple = new Fruit("苹果", applePrice, 78, noDiscountStrategy);
+        Fruit strawberry = new Fruit("草莓", strawberryPrice, 123, noDiscountStrategy);
+        Fruit mongo = new Fruit("芒果", mongoPrice, 231, noDiscountStrategy);
 
         //用户下单结算(满减策略)
         Order order = new Order(reduceStrategy);
